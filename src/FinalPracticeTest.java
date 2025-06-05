@@ -12,5 +12,31 @@ public class FinalPracticeTest {
 
     // TODO: Make more tests for oddIndexSum
 
+    // Sum odd index with null head
+    @Test
+    void testOddIndexSum_nullHead() {
+        ListNode list = null;
+        int actual = FinalPractice.oddIndexSum(list);
+        assertEquals(0, actual);    
+    }
+
+    // Sum odd index with single node
+    @Test
+    void testOddIndexSum_singleListNode() {
+        ListNode singleList = new ListNode(100);
+        int actual = FinalPractice.oddIndexSum(singleList);
+        assertEquals(0, actual);
+    }
+
+    // Sum odd index with 2 nodes
+    @Test
+    void testOddIndexSum_twoNode() {
+        ListNode twoNodeList = new ListNode(4, new ListNode(10));
+        int actual = FinalPractice.oddIndexSum(twoNodeList);
+        assertEquals(10, actual);
+
+    }
+
+
     // TODO: Make thorough tests for ALL the questions on the study guide
 }
