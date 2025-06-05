@@ -41,4 +41,24 @@ public class FinalPractice {
     }
 
     // TODO: implement the rest of the study guide AND MAKE GOOD UNIT TESTS
+
+    // Possible variation: Sum of elements at even indexes
+    public static int evenIndexSum(ListNode head) {
+
+        // Initialize index, sum
+        int index = 0;
+        int sum = 0;
+
+        // I made a short version of it
+        // Using for-loop with current starting at head; the loop continues while current is not null
+        // In each iteration, we move to the next node and increase index by 1
+        // Checking if index is even number, if yes, then add the value of that index into sum
+        for (ListNode current = head; current != null; current = current.next, index++) {
+            if (index % 2 == 0) sum += current.data;
+        }
+
+        return sum;
+
+
+    }
 }
