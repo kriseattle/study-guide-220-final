@@ -133,7 +133,7 @@ public class FinalPracticeTest {
     //              \      /  \
     //              4     11  12
     @Test
-    void testSumLeafNodesWithEvenValues1() {
+    void testSumLeafNodes_evenValues1() {
         TreeNode root = new TreeNode(5, new TreeNode(7, null, new TreeNode(4)), new TreeNode(6, new TreeNode(11), new TreeNode(12)));
         int actual = FinalPractice.sumEvenLeafNodes(root);
         assertEquals(16, actual);
@@ -154,12 +154,62 @@ public class FinalPracticeTest {
         The sum of the even leaf nodes is 8+16+22 = 46
      */
     @Test
-    void testSumLeafNodes() {
+    void testSumLeafNodes_evenValues2() {
         TreeNode root = new TreeNode(12, new TreeNode(6, new TreeNode(4, new TreeNode(3), null), new TreeNode(8)), new TreeNode(18, new TreeNode(16), new TreeNode(20, new TreeNode(22), null)));
     
-    int actual = FinalPractice.sumEvenLeafNodes(root);
-    assertEquals(46, actual);
+        int actual = FinalPractice.sumEvenLeafNodes(root);
+        assertEquals(46, actual);
     }
 
-}
+    // with null root for even nodes 
+    @Test
+    void testSumLeafNodes_evenValues3() {
+        TreeNode root = null;
+        int actual = FinalPractice.sumEvenLeafNodes(root);
+        assertEquals(0, actual);
+    }
 
+    // with null root for odd nodes
+    @Test
+    void testSumLeafNodes_oddValues1() {
+        TreeNode root = null;
+        int actual = FinalPractice.sumOddLeafNodes(root);
+        assertEquals(0, actual);
+    }
+
+    /*
+    Tree:
+                  12
+                /   \
+              6      18
+            / \     /  \
+           4   8  16   20
+          /              \
+        3                22
+     */
+    @Test
+    void testSumLeafNodes_oddValues2() {
+        TreeNode root = new TreeNode(12, new TreeNode(6, new TreeNode(4, new TreeNode(3), null), new TreeNode(8)), new TreeNode(18, new TreeNode(16), new TreeNode(20, new TreeNode(22), null)));
+    
+        int actual = FinalPractice.sumOddLeafNodes(root); // only leaf node with value 3
+        assertEquals(3, actual);
+    }
+
+    /*
+    Tree:
+                      5
+                  /       \
+                 7         6
+                  \      /  \
+                  4     11  12
+    */
+    @Test
+    void testSumLeafNodes_oddValues3() {
+        TreeNode root = new TreeNode(5, new TreeNode(7, null, new TreeNode(4)), new TreeNode(6, new TreeNode(11), new TreeNode(12)));
+        int actual = FinalPractice.sumOddLeafNodes(root); // only leaf node with value 11
+        assertEquals(11, actual);
+    }
+
+
+
+}
