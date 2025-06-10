@@ -170,4 +170,70 @@ public class FinalPractice {
         // return sum of left and right of the tree node
         return sumOddLeafNodes(root.left) + sumOddLeafNodes(root.right);
     }
+
+    /******************************************************************/
+
+    /**
+     * Given a reference to the root of a tree, return the sum of the branch nodes with odd values in the tree. Do not include any even or leaf nodes.
+     * Example:
+        Tree:
+                  15
+                /    \
+               9      4
+              / \    /  \
+            8   11 21   30
+           / \       \
+          2   6       23
+
+        Expected Answer: 45
+        The branch nodes are 15  9  4  8  21, and the odd ones are 15  9   21
+        The sum of the odd branch nodes is 15+9+21=45
+     
+     * @param root the root of the tree nodes
+     * @return the sum of BRANCH nodes only with ODD values
+     */
+    public static int sumOddBranchNodes(TreeNode root) {
+        // set condition for null
+        if (root == null) return 0;
+
+        // initialize sum value
+        int sum = 0;
+
+        // if statement to check for branch only
+        if (root.left != null || root.right != null) {
+
+            // if statement to check if branch values are odd
+            if (root.data % 2 != 0) {
+                sum += root.data;
+            }
+        }
+
+        sum += sumOddBranchNodes(root.left);
+        sum += sumOddBranchNodes(root.right);
+
+        return sum;
+    }
+
+
+    /** POSSIBLE VARIATION: Sum of branch nodes with EVEN values
+     * @param root the root of the tree nodes
+     * @return the sum of BRANCH nodes only with EVEN values
+     */
+    public static int sumEvenBranchNodes(TreeNode root) {
+        if (root == null) return 0;
+        int sum = 0;
+
+        if (root.left != null || root.right != null) {
+            if (root.data % 2 == 0) {
+                sum += root.data;
+            }
+        }
+
+        sum += sumEvenBranchNodes(root.left);
+        sum += sumEvenBranchNodes(root.right);
+
+        return sum;
+    }
+
+
 }

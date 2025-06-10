@@ -121,9 +121,9 @@ public class FinalPracticeTest {
         assertEquals(30, actual);
     }
 
-     /******************************************************************/
+/******************************************************************/
 
-     /*
+    /*
      * Testing for SUM of leaf nodes with even values
      */
     // Tree:
@@ -210,6 +210,90 @@ public class FinalPracticeTest {
         assertEquals(11, actual);
     }
 
+/******************************************************************/
 
+    /*
+     * Testing for SUM of BRANCH nodes with ODD values
+     */
+
+    /*
+    Tree:
+                  15
+                /    \
+               9      4
+              / \    /  \
+            8   11 21   30
+           / \       \
+          2   6       23
+
+        Expected Answer: 45
+        The branch nodes are 15  9  4  8  21, and the odd ones are 15  9   21
+        The sum of the odd branch nodes is 15+9+21=45
+     */
+    @Test
+    void testSumBranchNodes_oddValues1() {
+        TreeNode root = new TreeNode(15, new TreeNode(9, new TreeNode(8, new TreeNode(2), new TreeNode(6)), new TreeNode(11)), new TreeNode(4, new TreeNode(21, null, new TreeNode(23)), new TreeNode(30)));
+        int actual = FinalPractice.sumOddBranchNodes(root); //15 + 9 +21 = 45
+        assertEquals(45, actual);
+    }
+
+    // with null root for odd nodes
+    @Test
+    void testSumBranchNodes_oddValues2() {
+        TreeNode root = null;
+        int actual = FinalPractice.sumOddBranchNodes(root);
+        assertEquals(0, actual);
+    }
+
+    // Tree:
+    //                  5
+    //              /       \
+    //             7         6
+    //              \      /  \
+    //              4     11  12
+    @Test
+    void testSumBranchNodes_oddValues3() {
+        TreeNode root = new TreeNode(5, new TreeNode(7, null, new TreeNode(4)), new TreeNode(6, new TreeNode(11), new TreeNode(12)));
+        int actual = FinalPractice.sumOddBranchNodes(root); // 5 + 7 = 12
+        assertEquals(12, actual);
+    }
+
+    /*
+    Tree:
+                  15
+                /    \
+               9      4
+              / \    /  \
+            8   11 21   30
+           / \       \
+          2   6       23
+     */
+    @Test
+    void testSumBranchNodes_evenValues1() {
+        TreeNode root = new TreeNode(15, new TreeNode(9, new TreeNode(8, new TreeNode(2), new TreeNode(6)), new TreeNode(11)), new TreeNode(4, new TreeNode(21, null, new TreeNode(23)), new TreeNode(30)));
+        int actual = FinalPractice.sumEvenBranchNodes(root); // 8 + 4 = 12
+        assertEquals(12, actual);
+    }
+
+    // with null root for odd nodes
+    @Test
+    void testSumBranchNodes_evenValues2() {
+        TreeNode root = null;
+        int actual = FinalPractice.sumEvenBranchNodes(root);
+        assertEquals(0, actual);
+    }
+
+    // Tree:
+    //                  5
+    //              /       \
+    //             7         6
+    //              \      /  \
+    //              4     11  12
+    @Test
+    void testSumBranchNodes_evenValues3() {
+        TreeNode root = new TreeNode(5, new TreeNode(7, null, new TreeNode(4)), new TreeNode(6, new TreeNode(11), new TreeNode(12)));
+        int actual = FinalPractice.sumEvenBranchNodes(root); // 6
+        assertEquals(6, actual);
+    }
 
 }
