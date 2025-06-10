@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 public class FinalPracticeTest {
@@ -296,4 +298,26 @@ public class FinalPracticeTest {
         assertEquals(6, actual);
     }
 
+/******************************************************************/
+
+    /*
+     * Testing map<Integer, Integer> 
+     */
+    // with long linked list
+    // 4 - 8 - 10 - 12 - 10 - 3 - 4 - 8 - 9
+    @Test
+    void testCountDuplicateNodes1() {
+        ListNode list = new ListNode(4, new ListNode(8, new ListNode(10, new ListNode(12, new ListNode(10, new ListNode(3, new ListNode(4, new ListNode(8, new ListNode(9)))))))));
+        Map<Integer, Integer> actual = FinalPractice.countDuplicateNodes(list);
+       
+        assertEquals((Integer) 2, actual.get(4));
+        assertEquals((Integer) 2, actual.get(8));
+        assertEquals((Integer) 2, actual.get(10));
+        assertEquals((Integer) 1, actual.get(12));
+        assertEquals((Integer) 1, actual.get(3));
+        assertEquals((Integer) 1, actual.get(9));
+    }
+
 }
+
+

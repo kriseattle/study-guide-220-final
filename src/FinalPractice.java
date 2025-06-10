@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class FinalPractice {
     public static void main(String[] args) {
@@ -235,5 +237,55 @@ public class FinalPractice {
         return sum;
     }
 
+/******************************************************************/
 
+    /**
+     * Given a reference to a head node in a linked list of integers, return a Map<Integer, Integer> containing each value along with the number of times it shows up.
+     * Example:
+        Linked List:
+        4 -> 34 -> 4 -> 16 -> 4 -> 16 -> 29 -> 8 -> 8
+
+        Expected Return Map (order is unimportant): 
+        { 
+        4: 3,
+        8: 2,
+        16: 2,
+        29: 1,
+        34: 1
+        } 
+
+        Explanation
+        4 shows up three times
+        8 shows up two times
+        16 shows up two times
+        29 shows up one time
+        34 shows up one time
+
+      * @param head the head of the linked list
+      * @return a map with key as list node and the value as how many times the key as appear
+      */
+    public static Map<Integer, Integer> countDuplicateNodes(ListNode head) {
+        // Create a map
+        Map<Integer, Integer> map = new HashMap<>();
+
+        // Set condition for null head
+        if (head == null) return map;
+
+        ListNode current = head;
+
+        // Use while loop
+        while (current != null) {
+            int value = current.data;
+
+            // If map contains the value
+            if (map.containsKey(value)) {
+                map.put(value, map.get(value) + 1); // add value and add 1
+            } else {
+                map.put(value, 1); // if appear once, add value and add 1
+            }
+            current = current.next;
+
+        }
+        return map;
+    }
 }
