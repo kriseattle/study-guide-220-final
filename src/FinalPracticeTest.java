@@ -3,6 +3,13 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 public class FinalPracticeTest {
+
+    /*
+     * Testing SUM of ODD and EVEN indexes
+     */
+
+     // ODD indexes
+     // with long linked list
     @Test
     void testOddIndexSum_oddLengthList() {
         ListNode list = new ListNode(4, new ListNode(8, new ListNode(15, new ListNode(16, new ListNode(23, new ListNode(42, new ListNode(11, new ListNode(29, new ListNode(34)))))))));
@@ -10,10 +17,7 @@ public class FinalPracticeTest {
         assertEquals(95, actual);
     }
 
-    // TODO: Make more tests for oddIndexSum
-
-    // Sum odd indexes
-    //with null head
+    // with null head
     @Test
     void testOddIndexSum_nullList() {
         ListNode list = null;
@@ -21,7 +25,7 @@ public class FinalPracticeTest {
         assertEquals(0, actual);    
     }
 
-    //with single node
+    // with single node
     @Test
     void testOddIndexSum_singleNode() {
         ListNode singleList = new ListNode(100);
@@ -29,7 +33,7 @@ public class FinalPracticeTest {
         assertEquals(0, actual);
     }
 
-    //with 2 nodes
+    // with 2 nodes
     @Test
     void testOddIndexSum_twoNodes() {
         ListNode twoNodeList = new ListNode(4, new ListNode(10));
@@ -38,10 +42,9 @@ public class FinalPracticeTest {
 
     }
 
-    // TODO: Make thorough tests for ALL the questions on the study guide
 
-    // Sum even indexes
-    //with a long  even list
+    // EVEN indexes
+    // with long linked list
     @Test
     void testEvenIndexSum_longEvenList() {
         ListNode list = new ListNode(4, new ListNode(8, new ListNode(15, new ListNode(16, new ListNode(23, new ListNode(42, new ListNode(11, new ListNode(29, new ListNode(34)))))))));
@@ -49,7 +52,7 @@ public class FinalPracticeTest {
         assertEquals(87, actual);
     }
 
-    //with null list
+    // with null list
     @Test
     void testEvenIndexSum_nullList() {
         ListNode nullList = null;
@@ -57,7 +60,7 @@ public class FinalPracticeTest {
         assertEquals(0, actual);
     }
 
-    //with single node
+    // with single node
     @Test
     void testEvenIndexSum_singleListNode() {
         ListNode list = new ListNode(3);
@@ -65,7 +68,7 @@ public class FinalPracticeTest {
         assertEquals(3, actual);
     }
 
-    //with two nodes
+    // with two nodes
     @Test
     void testEvenIndexSum_twoNodes() {
         ListNode list = new ListNode(13, new ListNode(23));
@@ -73,7 +76,7 @@ public class FinalPracticeTest {
         assertEquals(13, actual);
     }
 
-    //with negative nodes
+    // with negative nodes
     @Test
     void testEvenIndexSum_hasNegativeListNode() {
         ListNode list = new ListNode(1, new ListNode(2, new ListNode(-4, new ListNode(5, new ListNode(7)))));
@@ -81,6 +84,40 @@ public class FinalPracticeTest {
         assertEquals(4, actual);
     }
 
+
+    /*
+     * Testing for MAX of N nodes
+     */
+    // MAX of null list
+    @Test
+    void testMaxOfNullList() {
+        ListNode list = null;
+        int actual = FinalPractice.maxOfLastNnodes(list, 3);
+        assertEquals(Integer.MIN_VALUE, actual);
+    }
+
+    // MAX of last 3 in total of 5
+    @Test
+    void testMax3Nodes_of5() {
+        ListNode list = new ListNode(1, new ListNode(2, new ListNode(-4, new ListNode(5, new ListNode(7)))));
+        int actual = FinalPractice.maxOfLastNnodes(list, 3);
+        assertEquals(7, actual);
+    }
+
+    // MAX of last 3 in total of 2
+    @Test
+    void testMax3Nodes_of2() {
+        ListNode list = new ListNode(0, new ListNode(5));
+        int actual = FinalPractice.maxOfLastNnodes(list, 3);
+        assertEquals(5, actual);
+    }
     
+    // MAX of last 4 in total of 5
+    @Test
+    void testMax4Nodes_of5() {
+        ListNode list = new ListNode(-1, new ListNode(3, new ListNode(10, new ListNode(30, new ListNode(5)))));
+        int actual = FinalPractice.maxOfLastNnodes(list, 4);
+        assertEquals(30, actual);
+    }
 }
 

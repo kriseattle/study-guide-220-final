@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class FinalPractice {
     public static void main(String[] args) {
         // Feel free to call your methods here to experiment
@@ -6,15 +8,19 @@ public class FinalPractice {
     }
 
     /**
-     * Return the sum of the values at odd indexes in a linked list.
-     * 
+     * Return the SUM of the values at ODD indexes in a linked list. 
      * Assumes head is at index 0.
-     * 
      * If passed a null head, returns 0.
-     * 
      * @param head the head of the linked list
      * @return the sum of the values at odd indexes
+     * Example:
+        Linked List:
+        4 -> 8 -> 15 -> 16 -> 23 -> 42 -> 11 -> 29 -> 34
+        Expected answer: 95
+        Sum of elements at odd indexes:
+        8 + 16 + 42 + 29 = 95
      */
+
     public static int oddIndexSum(ListNode head) {
         // TODO: implement this AND MAKE MORE UNIT TESTS FOR IT
 
@@ -36,13 +42,20 @@ public class FinalPractice {
         }
 
         // Return final sum
-        return sum;
-        
+        return sum; 
     }
 
-    // TODO: implement the rest of the study guide AND MAKE GOOD UNIT TESTS
+    /******************************************************************/
 
-    // Possible variation: Sum of elements at even indexes
+    /**
+     * POSSIBLE VARIATION: SUM of elements at EVEN indexes
+     * Return the sum of the values at EVEN indexes in a linked list. 
+     * Assumes head is at index 0.
+     * If passed a null head, returns 0.
+     * @param head the head of the linked list
+     * @return the sum of the values at even indexes
+     */
+
     public static int evenIndexSum(ListNode head) {
 
         // Initialize index, sum
@@ -58,7 +71,50 @@ public class FinalPractice {
         }
 
         return sum;
+    }
 
+    /******************************************************************/
 
+    /**
+    * Given a reference to the head of a linked list, return the MAX of only the LAST n values of the list.
+     * @param head the head of the linked list
+     * @param n the desire numbers of nodes to be checked
+     * @return the max number after the comparasion of n nodes
+     * if HEAD is NULL or desire n nodes is <= 0, return Integer.MIN_VALUE
+     * Example: MAX of last 3 values of the list
+        Linked List:
+        7 -> 3 -> 19 -> 21 -> 14 -> 33 -> 8 -> 26 -> 11 -> 5
+        Expected Answer: 26
+        Last 3 values are: 26  11  5, the largest of which is 26
+    * POSSIBLE VARIATION: Largest of last 4 values
+     */
+    // This method will solve the problem for any desire n number instead of just set 3 or 4 at the beginning
+    public static int maxOfLastNnodes(ListNode head, int n) {
+
+        // Set conditions for null and n number
+        if (head == null || n <= 0) return Integer.MIN_VALUE;
+
+        // Create a new LinkedList to store the desire of n nodes
+        LinkedList<Integer> nList = new LinkedList<>();
+        ListNode current = head;
+
+        // Newest node will be added to the end of the LinkedList
+        while (current != null) {
+            nList.addLast(current.data);
+
+            // If there are more nodes than what we need, remove the oldest
+            if (nList.size() > n) {
+                nList.removeFirst();
+            }
+            current = current.next;
+        }
+
+        // Find the max
+        int max = Integer.MIN_VALUE;
+        for (int node : nList) {
+            if (node > max) max = node;
+        }
+        
+        return max;
     }
 }
