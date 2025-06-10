@@ -84,6 +84,7 @@ public class FinalPracticeTest {
         assertEquals(4, actual);
     }
 
+ /******************************************************************/
 
     /*
      * Testing for MAX of N nodes
@@ -119,5 +120,46 @@ public class FinalPracticeTest {
         int actual = FinalPractice.maxOfLastNnodes(list, 4);
         assertEquals(30, actual);
     }
+
+     /******************************************************************/
+
+     /*
+     * Testing for SUM of leaf nodes with even values
+     */
+    // Tree:
+    //                  5
+    //              /       \
+    //             7         6
+    //              \      /  \
+    //              4     11  12
+    @Test
+    void testSumLeafNodesWithEvenValues1() {
+        TreeNode root = new TreeNode(5, new TreeNode(7, null, new TreeNode(4)), new TreeNode(6, new TreeNode(11), new TreeNode(12)));
+        int actual = FinalPractice.sumEvenLeafNodes(root);
+        assertEquals(16, actual);
+    }
+
+    /*
+      Tree:
+                  12
+                /   \
+              6      18
+            / \     /  \
+           4   8  16   20
+          /              \
+        3                22
+
+        Expected Answer: 46
+        The leaf nodes are 3   8   16   22, and the even ones are 8   16   22.
+        The sum of the even leaf nodes is 8+16+22 = 46
+     */
+    @Test
+    void testSumLeafNodes() {
+        TreeNode root = new TreeNode(12, new TreeNode(6, new TreeNode(4, new TreeNode(3), null), new TreeNode(8)), new TreeNode(18, new TreeNode(16), new TreeNode(20, new TreeNode(22), null)));
+    
+    int actual = FinalPractice.sumEvenLeafNodes(root);
+    assertEquals(46, actual);
+    }
+
 }
 

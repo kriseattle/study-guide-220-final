@@ -117,4 +117,39 @@ public class FinalPractice {
         
         return max;
     }
+
+    /******************************************************************/
+
+    /**
+     * Given a reference to the root of a tree, return the sum of the leaf nodes with even values in the tree. Do not include any odd or branch nodes.
+     * @param head the head of the linked list
+     * @return the SUM of the LEAF nodes only with EVEN values
+     * if HEAD is NULL, return 0
+     * Example:
+        Tree:
+                  12
+                /   \
+              6      18
+            / \     /  \
+           4   8  16   20
+          /              \
+        3                22
+
+        Expected Answer: 46
+        The leaf nodes are 3   8   16   22, and the even ones are 8   16   22.
+        The sum of the even leaf nodes is 8+16+22 = 46
+     * POSSIBLE VARIATION: Sum of leaf nodes with odd values
+     */
+    public static int sumEvenLeafNodes(TreeNode root) {
+        // set condition for null
+        if (root == null) return 0;
+
+        // check for only leaf nodes and even
+        if (root.left == null && root.right == null) {
+            return (root.data % 2 == 0) ? root.data : 0;
+        }
+
+        // return sum of left and right of the tree node
+        return sumEvenLeafNodes(root.left) + sumEvenLeafNodes(root.right);
+    }
 }
