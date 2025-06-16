@@ -68,8 +68,17 @@ public class FinalPractice {
         // Using for-loop with current starting at head; the loop continues while current is not null
         // In each iteration, we move to the next node and increase index by 1
         // Checking if index is even number, if yes, then add the value of that index into sum
-        for (ListNode current = head; current != null; current = current.next, index++) {
-            if (index % 2 == 0) sum += current.data;
+        
+        // for (ListNode current = head; current != null; current = current.next, index++) {
+        //     if (index % 2 == 0) sum += current.data;
+        // }
+        ListNode current = head;
+        while (current != null) {
+            if (index % 2 == 0) {
+                sum += current.data;
+            }
+            current = current.next;
+            index++;
         }
 
         return sum;
@@ -275,13 +284,13 @@ public class FinalPractice {
 
         // Use while loop
         while (current != null) {
-            int value = current.data;
+            int nodeValue = current.data;
 
             // If map contains the value
-            if (map.containsKey(value)) {
-                map.put(value, map.get(value) + 1); // add value and add 1
+            if (map.containsKey(nodeValue)) {
+                map.put(nodeValue, map.get(nodeValue) + 1); // add value and add 1
             } else {
-                map.put(value, 1); // if appear once, add value and add 1
+                map.put(nodeValue, 1); // if appear once, add value and add 1
             }
             current = current.next;
 
